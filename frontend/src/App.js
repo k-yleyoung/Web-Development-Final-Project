@@ -1,11 +1,12 @@
 // src/App.js
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Login from './components/Auth/login.js';
-import Register from './components/Auth/register.js';
-import Dashboard from './components/dashboard.js';
-import CreateEntryForm from './components/createentryform.js';
-import EditEntryForm from './components/editentryform.js';
+import Login from './components/Auth/login';
+import Register from './components/Auth/register';
+import Dashboard from './components/dashboard';
+import CreateEntryForm from './components/createentryform';
+import EditEntryForm from './components/editentryform';
 
 function App() {
   return (

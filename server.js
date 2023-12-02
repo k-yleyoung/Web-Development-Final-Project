@@ -1,6 +1,26 @@
 if (process.env.NODE_ENV !== 'production'){
     require('dotenv').config()
  }
+
+const mysql = require('mysql');
+
+
+//FOR MYSQL DATABASE
+const db = mysql.createConnection({
+   host: 'your_mysql_host',
+   user: 'your_mysql_user',
+   password: 'your_mysql_password',
+   database: 'your_database_name',
+});
+
+db.connect((err) => {
+   if (err) {
+      console.error('Error connecting to MySQL:', err);
+      return;
+   }
+   console.log('Connected to MySQL!');
+});
+
  
  const express = require('express')
  const app = express()
@@ -12,14 +32,33 @@ if (process.env.NODE_ENV !== 'production'){
  const session = require('express-session')
  const methodOverride = require('method-override')
  
- const usrs = []
  
  const createPassport = require('./passportConfig')
  createPassport(
-    passport,
-    email=>usrs.find(user => user.email === email),
-    id =>usrs.find(user =>user.id === id)
- )
+   passport,
+   async (email) => {
+      return new Promise((resolve, reject) => {
+         db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+            if (err) {
+               reject(err);
+            } else {
+               resolve(results[0]);
+            }
+         });
+      });
+   },
+   async (id) => {
+      return new Promise((resolve, reject) => {
+         db.query('SELECT * FROM users WHERE id = ?', [id], (err, results) => {
+            if (err) {
+               reject(err);
+            } else {
+               resolve(results[0]);
+            }
+         });
+      });
+   }
+);
  
  app.set('view-engine','ejs')
  app.use(express.urlencoded({extended: false}))
@@ -65,23 +104,30 @@ if (process.env.NODE_ENV !== 'production'){
     failureFlash: true
  }))
  
- app.post('/register', checkNotAuthenticated, async(req, res) => {
-    try{
-       const hashedPassword = await bcrypt.hash(req.body.password, 8)
-       usrs.push({
-          id: Date.now().toString(),
-          name: req.body.name,
-          email: req.body.email,
-          password: hashedPassword
-       })
-       res.redirect('/login')
-    }catch{
-       res.redirect('/register')
-    }
-    console.log(usrs)
-    //logs usr out
- })
- 
+ app.post('/register', checkNotAuthenticated, async (req, res) => {
+   try {
+      const hashedPassword = await bcrypt.hash(req.body.password, 8);
+
+      db.query('INSERT INTO users SET ?', {
+         name: req.body.name,
+         email: req.body.email,
+         password: hashedPassword,
+      }, (err, result) => {
+         if (err) {
+            console.error('Error inserting user into MySQL:', err);
+            res.redirect('/register');
+         } else {
+            console.log('User inserted into MySQL:', result);
+            res.redirect('/login');
+         }
+      });
+   } catch (error) {
+      console.error('Error during registration:', error);
+      res.redirect('/register');
+   }
+});
+
+
  app.delete('/logout', (req, res) => {
     req.logOut()
     res.redirect('/login')
@@ -100,5 +146,26 @@ if (process.env.NODE_ENV !== 'production'){
     }
     next()
  }
+
+
+// Create a new entry
+app.post('/api/create-entry', (req, res) => {
+   // Handle the creation logic here
+   // Example: Insert the entry into the database
+   // ...
+ 
+   res.status(201).send({ message: 'Entry created successfully' });
+ });
+ 
+ // Update an entry
+ app.put('/api/edit-entry/:id', (req, res) => {
+   const entryId = req.params.id;
+   // Handle the update logic here
+   // Example: Update the entry in the database based on entryId
+   // ...
+ 
+   res.status(200).send({ message: 'Entry updated successfully' });
+ });
+ 
  
  app.listen(port, () => console.log(`Example app listening on port ${port}!`))
