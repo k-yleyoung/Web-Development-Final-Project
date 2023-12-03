@@ -1,36 +1,92 @@
+const express = require('express')
+const app = express()
+const port = 3000
+const bcrypt = require('bcrypt')
+const passport = require('passport')
+const flash = require('express-flash')
+const session = require('express-session')
+const methodOverride = require('method-override')
+
+const mysql = require('mysql2');
+
+const connection = mysql.createConnection({
+  host: '192.168.50.44',
+  user: 'root',
+  password: 'web dev final',
+  database: 'sys',
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err);
+    return;
+  }
+  console.log('Connected to MySQL database');
+});
+
+
+
 if (process.env.NODE_ENV !== 'production'){
     require('dotenv').config()
  }
 
-const mysql = require('mysql');
 
 
-//FOR MYSQL DATABASE
-const db = mysql.createConnection({
-   host: 'your_mysql_host',
-   user: 'your_mysql_user',
-   password: 'your_mysql_password',
-   database: 'your_database_name',
+
+const insertQuery = 'INSERT INTO users (username) VALUES (?)';
+const username = 'john_doe';
+
+connection.query(insertQuery, [username], (err, results) => {
+  if (err) {
+    console.error('Error inserting record:', err);
+    return;
+  }
+  console.log('Record inserted:', results.insertId);
 });
 
-db.connect((err) => {
+const selectQuery = 'SELECT * FROM users';
+
+connection.query(selectQuery, (err, results) => {
+  if (err) {
+    console.error('Error selecting records:', err);
+    return;
+  }
+  console.log('Selected records:', results);
+});
+
+const updateQuery = 'UPDATE users SET username = ? WHERE user_id = ?';
+const newUsername = 'updated_john_doe';
+const userIdToUpdate = 1;
+
+connection.query(updateQuery, [newUsername, userIdToUpdate], (err, results) => {
+  if (err) {
+    console.error('Error updating record:', err);
+    return;
+  }
+  console.log('Record updated:', results.affectedRows);
+});
+
+const deleteQuery = 'DELETE FROM users WHERE user_id = ?';
+const userIdToDelete = 1;
+
+connection.query(deleteQuery, [userIdToDelete], (err, results) => {
+  if (err) {
+    console.error('Error deleting record:', err);
+    return;
+  }
+  console.log('Record deleted:', results.affectedRows);
+});
+
+connection.end((err) => {
    if (err) {
-      console.error('Error connecting to MySQL:', err);
-      return;
+     console.error('Error closing connection:', err);
+     return;
    }
-   console.log('Connected to MySQL!');
-});
+   console.log('Connection closed');
+ });
+ 
+ 
 
- 
- const express = require('express')
- const app = express()
- const port = 3000
- 
- const bcrypt = require('bcrypt')
- const passport = require('passport')
- const flash = require('express-flash')
- const session = require('express-session')
- const methodOverride = require('method-override')
  
  
  const createPassport = require('./passportConfig')
@@ -38,7 +94,7 @@ db.connect((err) => {
    passport,
    async (email) => {
       return new Promise((resolve, reject) => {
-         db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+         connection.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
             if (err) {
                reject(err);
             } else {
@@ -49,7 +105,7 @@ db.connect((err) => {
    },
    async (id) => {
       return new Promise((resolve, reject) => {
-         db.query('SELECT * FROM users WHERE id = ?', [id], (err, results) => {
+         connection.query('SELECT * FROM users WHERE id = ?', [id], (err, results) => {
             if (err) {
                reject(err);
             } else {
@@ -59,7 +115,8 @@ db.connect((err) => {
       });
    }
 );
- 
+
+
  app.set('view-engine','ejs')
  app.use(express.urlencoded({extended: false}))
  
@@ -76,19 +133,6 @@ db.connect((err) => {
  app.use(passport.initialize())
  app.use(passport.session())
  app.use(methodOverride('_method'))
- 
- app.get('/', checkAuthenticated, (req, res) =>{
-    res.render('index.ejs', {name: req.user.name})
- })
- 
- app.get('/login', checkNotAuthenticated, (req, res) => {
-    res.render('login.ejs') 
- })
- 
- app.get('/register', checkNotAuthenticated, (req, res) => {
-    res.render('register.ejs');
- });
- 
  
  
  //1 accesses the css and the js files in the public foler 
@@ -108,7 +152,7 @@ db.connect((err) => {
    try {
       const hashedPassword = await bcrypt.hash(req.body.password, 8);
 
-      db.query('INSERT INTO users SET ?', {
+         connection.query('INSERT INTO users SET ?', {
          name: req.body.name,
          email: req.body.email,
          password: hashedPassword,
