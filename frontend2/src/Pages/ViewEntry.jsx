@@ -1,4 +1,6 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 function getJounralId() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -23,9 +25,12 @@ if(journalId==='4'){
 
 
 export default function ViewEntry() {
+    const navigate = useNavigate();
+
+
   return (
     <div>
-        <a href='dashboard'>dashboard</a>
+        <button onClick={() => navigate("/dashboard")}>dashboard</button>
         <h2>{journal.title}</h2>
         <h4>{journal.date}</h4>
         <p>{journal.content}</p>

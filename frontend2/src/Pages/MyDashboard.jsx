@@ -1,4 +1,6 @@
 import React, { useEffect, useState} from 'react'
+import { useNavigate } from 'react-router-dom';
+
 //import axios from 'axios'
 
 const journals = [
@@ -8,11 +10,15 @@ const journals = [
   {title: 'entry 4', timestamp: '12/2', id:4},
 ]
 
-function viewEntry(journalId){
-  window.location.href="viewEntry?id="+journalId;
-}
 
 export default function MyDashboard() {
+
+  const navigate = useNavigate();
+
+  function viewEntry(journalId){
+    navigate("/viewEntry?id="+journalId);
+  }
+
   /*const [journals, setJournals] = useState([]);
 
   useEffect(() => {
@@ -33,7 +39,7 @@ export default function MyDashboard() {
     <div>
       <div id="createNew" className='entryBox'>
         <h3>Create New</h3>
-        <button onClick={() => window.location.href="createEntry"}>click me!</button>
+        <button onClick={() => navigate("/createEntry")}>click me!</button>
       </div>
       <div>
         {journals.map((journal, index)=>(
