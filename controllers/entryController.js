@@ -84,10 +84,10 @@ const updateEntry = asyncHandler(async (req, res) => {
 
 //DELETE
 const deleteEntry = asyncHandler(async (req, res) => {
-    const { title } = req.body
+    const { id } = req.body
 
     // Confirm data
-    if (!title) {
+    if (!id) {
         return res.status(400).json({ message: 'Entry ID required' })
     }
 
@@ -100,7 +100,7 @@ const deleteEntry = asyncHandler(async (req, res) => {
 
     const result = await entry.deleteOne()
 
-    const reply = `Entry '${result.title}' with ID ${result._id} deleted`
+    const reply = `Entry deleted`
 
     res.json(reply)
 })
