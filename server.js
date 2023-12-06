@@ -6,6 +6,17 @@ const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
+const cors = require('cors')
+
+//need to add cors to allow react to communicate with server
+app.use(cors())
+
+const corsOptions = {
+   origin: 'http://localhost:3000',
+   allowedHeaders: ['Content-Type', 'Authorization']
+}
+
+app.use(cors(corsOptions));
 
 const mysql = require('mysql2');
 

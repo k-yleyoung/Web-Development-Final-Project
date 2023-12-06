@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+import axios from 'react'
 
 //import axios from 'axios'
 
@@ -18,6 +19,12 @@ export default function MyDashboard() {
   function viewEntry(journalId){
     navigate("/viewEntry?id="+journalId);
   }
+
+  axios.get('http://localhost:8000/api/').then(
+    res=>{
+      console.log(res)
+    }
+  )
 
   /*const [journals, setJournals] = useState([]);
 
