@@ -55,3 +55,4 @@ mongoose.connection.on('error', err =>{
 })
 
 app.post('/api/createNewUser', usersController.createNewUser);
+app.post('/api/getAllUsers', usersController.getAllUsers);
