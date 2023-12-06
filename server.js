@@ -11,7 +11,6 @@ const connectDB = require('./config/dbConn')
 const mongoose = require('mongoose')
 const { logEvents } = require('./middleware/logger')
 const port = 3000
-const usersController = require('./controllers/usersController')
 
 connectDB()
 
@@ -53,6 +52,3 @@ mongoose.connection.on('error', err =>{
     console.log(err)
     logEvents(`${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`, 'mongoErrLog.log')
 })
-
-app.post('/api/createNewUser', usersController.createNewUser);
-app.post('/api/getAllUsers', usersController.getAllUsers);

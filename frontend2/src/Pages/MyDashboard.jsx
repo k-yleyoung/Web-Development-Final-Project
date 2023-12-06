@@ -12,16 +12,16 @@ const journals = [
 ]
 
 function getUsers() {
-  axios.get('http://localhost:3000/api/getAllUsers').then(
+  axios.get('http://localhost:3000/users').then(
       res=>{
-        alert('call to db');
         console.log(res)
-        alert(res)
+        alert(res.data[0].username)
         document.getElementById('myheader').innerHTML = res.data;
         //setJournals(res.data)
       }
     )
     .catch(error => {
+      alert('error call to db');
       console.error('Error fetching users:', error);
     });
 }
