@@ -1,0 +1,7 @@
+20231204	14:45:39	d09ddcb8-b2b5-47af-9023-4717ec4568cc	ValidationError: Entry validation failed: user: Cast to ObjectId failed for value "Chad" (type string) at path "user" because of "BSONError"	POST	/entry	undefined
+20231204	14:48:23	513df3a5-e5ab-4cbd-8f26-a5222022cd23	ReferenceError: roles is not defined	POST	/users	undefined
+20231205	21:18:38	a6fc0116-7141-43ee-ba49-c265ab7e5c23	ReferenceError: Note is not defined	DELETE	/entry	undefined
+20231205	21:20:16	bdd0c619-0365-4acd-8d0a-881c62979428	ReferenceError: Note is not defined	DELETE	/entry	undefined
+20231205	21:27:24	33b61e42-1833-4a3d-874b-e74a5fc0934a	ReferenceError: id is not defined	DELETE	/entry	undefined
+20231205	21:28:34	968e990e-d6dd-4db3-8e23-53436d525eb8	CastError: Cast to ObjectId failed for value "4567" (type string) at path "_id" for model "Entry"	DELETE	/entry	undefined
+20231205	21:29:44	f31cd9eb-f264-4cbe-bd13-36b58ef85381	ReferenceError: id is not defined	DELETE	/entry	undefined
