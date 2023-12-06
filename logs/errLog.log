@@ -18,3 +18,4 @@
 20231206	02:05:32	9180f5b7-fba3-4f02-8e83-212090123656	Error: Not allowed by CORS	OPTIONS	/api/createNewUser	http://localhost:3001
 20231206	14:42:09	64441a83-4f97-4115-8192-724af11bb227	ValidationError: Entry validation failed: user: Cast to ObjectId failed for value "alissa" (type string) at path "user" because of "BSONError"	POST	/entry	http://localhost:3001
 20231206	14:43:21	df501e79-fae8-4555-9e51-434c1117f116	ValidationError: Entry validation failed: user: Cast to ObjectId failed for value "Chad" (type string) at path "user" because of "BSONError"	POST	/entry	http://localhost:3001
+20231206	15:59:04	ff930739-7067-4b01-a263-4d1621dea03d	ValidationError: Entry validation failed: user: Cast to ObjectId failed for value "kyle" (type string) at path "user" because of "BSONError"	POST	/entry	http://localhost:57315
