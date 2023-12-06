@@ -5,3 +5,14 @@
 20231205	21:27:24	33b61e42-1833-4a3d-874b-e74a5fc0934a	ReferenceError: id is not defined	DELETE	/entry	undefined
 20231205	21:28:34	968e990e-d6dd-4db3-8e23-53436d525eb8	CastError: Cast to ObjectId failed for value "4567" (type string) at path "_id" for model "Entry"	DELETE	/entry	undefined
 20231205	21:29:44	f31cd9eb-f264-4cbe-bd13-36b58ef85381	ReferenceError: id is not defined	DELETE	/entry	undefined
+20231206	01:54:03	21b1e1d8-978c-4c51-bdfa-d4e8e9ff21e6	Error: Not allowed by CORS	OPTIONS	/api/createNewUser	http://localhost:3001
+20231206	01:54:13	ade8dfa9-fca2-4709-be70-671fd4f1bf0c	Error: Not allowed by CORS	OPTIONS	/api/createNewUser	http://localhost:3001
+20231206	01:55:27	6fcae3c6-14cf-4750-9573-97e8498bfb26	Error: Not allowed by CORS	OPTIONS	/api/createNewUser	http://localhost:3001
+20231206	01:55:43	c51b9235-bc6e-4f8d-9c70-b4f5ad1e6e1e	Error: Not allowed by CORS	OPTIONS	/api/createNewUser	http://localhost:3001
+20231206	01:57:57	3238d666-3038-48a4-b6d9-44b58964ddbd	Error: Not allowed by CORS	OPTIONS	/api/createNewUser	http://localhost:3001
+20231206	01:58:02	aaa73aeb-c538-4daa-9503-7d5e27c6db24	Error: Not allowed by CORS	OPTIONS	/api/createNewUser	http://localhost:3001
+20231206	02:00:14	5ba8f9cf-2b0d-4223-af89-d5aea0d7ec86	Error: Not allowed by CORS	OPTIONS	/api/createNewUser	http://localhost:3001
+20231206	02:00:49	2f49e0c6-58c3-4666-a505-7d88f61ea763	Error: Not allowed by CORS	OPTIONS	/api/createNewUser	http://localhost:3001
+20231206	02:04:45	da3de788-78e3-4851-a791-ae3f9bfc8170	Error: Not allowed by CORS	OPTIONS	/api/createNewUser	http://localhost:3001
+20231206	02:05:17	45ca4bfd-53bb-4365-89f6-0514f394b265	Error: Not allowed by CORS	OPTIONS	/api/createNewUser	http://localhost:3001
+20231206	02:05:32	9180f5b7-fba3-4f02-8e83-212090123656	Error: Not allowed by CORS	OPTIONS	/api/createNewUser	http://localhost:3001

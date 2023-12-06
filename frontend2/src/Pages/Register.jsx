@@ -1,28 +1,42 @@
-import React from 'react'
+import React, {useState} from 'react'
+import axios from 'axios'
+
 
 export default function Register() {
-  return (
-    <div>
-              <form action="/register" method="POST">
-            <div>
-                <label for="name">User</label><br></br>
-                <input type="text" id="name" name="name" required></input>
-            </div>
-            <div>
-                <label for="email">Email</label><br></br>
-                <input type="text" id="email" name="email" required></input>
-            </div>
-            <div>
-                <label for="password">Password</label><br></br>
-                <input type="text" id="password" name="password" required></input>
-            </div>
-            <section>
-                <button type="submit">Submit</button>
-            </section>
-            <br></br>
-            <a href="/">Login</a>
-            
-        </form>
-    </div>
-  )
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+
+  function handlePassChange(event) {
+      setPassword(event.target.value);
+  }
+
+  function handleUserChange(event) {
+      setUsername(event.target.value);
+  }
+
+  function handleSubmit(event) {
+      axios.post('http://localhost:3000/api/createNewUser', {username, password}).then(
+          res=>{
+            console.log(res)
+            //setJournals(res.data)
+          }
+        )
+  }
+
+return (
+  <div className='home'>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Username:
+        <input type="text" value={username} id='usernameField' onChange={handleUserChange} />
+      </label>
+      <label>
+        Password:
+        <input type="text" value={password} id='passwordField' onChange={handlePassChange} />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+)
 }
