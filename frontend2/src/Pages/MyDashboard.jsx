@@ -2,70 +2,42 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-//import axios from 'axios'
-
-const journals = [
-  {title: 'entry 1', timestamp: '12/1', id:1},
-  {title: 'entry 2', timestamp: '11/23', id:2},
-  {title: 'entry 3', timestamp: '12/4', id:3},
-  {title: 'entry 4', timestamp: '12/2', id:4},
-]
-
-function getUsers() {
-  axios.get('http://localhost:3000/users').then(
-      res=>{
-        console.log(res)
-        alert(res.data[0].username)
-        document.getElementById('myheader').innerHTML = res.data;
-        //setJournals(res.data)
-      }
-    )
-    .catch(error => {
-      alert('error call to db');
-      console.error('Error fetching users:', error);
-    });
-}
-
 
 export default function MyDashboard() {
 
-  const navigate = useNavigate();
+  const [topics, setTopics] = useState([]);
 
-  function viewEntry(journalId){
-    navigate("/viewEntry?id="+journalId);
+  function getUsers() {
+    axios.get('http://localhost:3000/users').then(
+        res=>{
+          console.log(res)
+          setTopics(res.data)
+        }
+      )
+      .catch(error => {
+        alert('error');
+        console.error('Error fetching users:', error);
+      });
   }
 
-  //const [journals, setJournals] = useState([]);
+  const navigate = useNavigate();
 
-  /*
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('/api/data');
-        setJournals(response.data)
-      } catch (error) {
-        console.error(error)
-      }
-    };
+  getUsers();
 
-    fetchData();
-
-  }, []);*/
+  function viewTopic(topicId){
+    navigate("/viewTopic?id="+topicId);
+  }
 
   return (
     <div>
-      <h2 id='myheader'>my header</h2>
-      <button onClick={getUsers}>click me</button>
+      <h2>Click on a topic to see view posts about that topic or to add to the conversation!</h2>
       <div id="createNew" className='entryBox'>
-        <h3>Create New</h3>
         <button onClick={() => navigate("/createEntry")}>click me!</button>
       </div>
       <div>
-        {journals.map((journal, index)=>(
+        {topics.map((topic, index)=>(
           <div key={index} className='entryBox'>
-            <h3>{journal.title}</h3>
-            <h4>{journal.timestamp}</h4>
-            <button onClick={() => viewEntry(journal.id)}>view</button>
+            <button onClick={() => viewTopic(topic._id)}>{topic.username}</button>
           </div>
         ))}
       </div>
