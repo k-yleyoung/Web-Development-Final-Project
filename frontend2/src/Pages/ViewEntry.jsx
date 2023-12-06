@@ -1,5 +1,6 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 
 function getJounralId() {
@@ -27,10 +28,25 @@ if(journalId==='4'){
 export default function ViewEntry() {
     const navigate = useNavigate();
 
+    function getEntries() {
+        axios.get('http://localhost:3000/entry').then(
+            res=>{
+              console.log(res)
+              alert(res.data[0].text)
+              //setJournals(res.data)
+            }
+          )
+          .catch(error => {
+            alert('error call to db');
+            console.error('Error fetching users:', error);
+          });
+      }
+
 
   return (
     <div>
         <button onClick={() => navigate("/dashboard")}>dashboard</button>
+        <button onClick={getEntries}>clikc</button>
         <h2>{journal.title}</h2>
         <h4>{journal.date}</h4>
         <p>{journal.content}</p>

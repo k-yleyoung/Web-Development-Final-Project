@@ -107,3 +107,17 @@
 20231206	14:03:09	8b0fdb99-e79c-4aff-9246-c1e7eb0fff6e	GET	/users	http://localhost:3001
 20231206	14:04:05	1fb6a72d-bd65-478b-8dd7-af1e43b08a24	GET	/users	http://localhost:3001
 20231206	14:04:27	3f4be367-5a32-4c79-a71d-da2d79679e15	GET	/users	http://localhost:3001
+20231206	14:42:09	0b05893c-5703-4a16-bb44-0210b73893b0	OPTIONS	/entry	http://localhost:3001
+20231206	14:42:09	6576d074-8964-4bc4-93f3-4b4e8299b752	POST	/entry	http://localhost:3001
+20231206	14:42:18	313387d1-13f7-4162-a67c-efa091de95da	GET	/entry	undefined
+20231206	14:43:21	977ef517-5a7a-480f-84f5-6ddd63d796da	OPTIONS	/entry	http://localhost:3001
+20231206	14:43:21	514ad084-cf77-4701-a4c1-44d0d8506ab6	POST	/entry	http://localhost:3001
+20231206	14:43:23	3a7915a7-8ec8-4d8f-b119-2e2bb253722c	GET	/entry	undefined
+20231206	14:43:24	fa8a0f40-7e0f-429b-b281-e960277ce4d7	GET	/entry	undefined
+20231206	14:43:24	1b5895e4-e916-4706-8463-cd1da7cc74ce	GET	/entry	undefined
+20231206	14:43:24	1144d91b-0699-4855-ae9f-db47713307a6	GET	/entry	undefined
+20231206	14:48:02	e4909b69-fdd3-4f7c-b5b6-de88acad5a7f	OPTIONS	/entry	http://localhost:3001
+20231206	14:48:02	b2f4c74e-ebe9-46a9-9f73-227a51ef33ec	POST	/entry	http://localhost:3001
+20231206	14:48:05	13323159-4992-4a41-b971-1cbc8834aa30	GET	/entry	undefined
+20231206	14:52:11	8045c0b9-1df7-496b-b2e5-04200196d093	GET	/users	http://localhost:3001
+20231206	14:56:59	f19cbcff-d9a7-434a-aea9-92e44ab5676f	GET	/entry	http://localhost:3001
