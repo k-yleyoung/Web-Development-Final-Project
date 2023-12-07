@@ -23,7 +23,7 @@ export default function Header({ title }) {
 }
 
 Header.defaultProps = {
-  title: 'Journal',
+  title: '',
 };
 
 Header.propTypes = {

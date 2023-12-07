@@ -24,3 +24,47 @@
 20231207	00:27:22	684e9745-a96d-4153-bbfb-7955e8a3c700	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
 20231207	00:28:06	54d825d1-ea4d-4221-95d9-615f3ab2fc80	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
 20231207	00:28:06	38a39511-ff59-45e2-9108-7481a4cac3e2	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	00:35:08	1c3e2a62-4e09-4e58-9835-e0925a6203b6	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	00:35:08	dc31c70d-ae98-4a6d-ade6-450187e80afc	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:29:25	a963dfd3-3e54-4258-983c-a228876363eb	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:29:25	ee05306e-d6ad-49a0-9a81-1051e54501ce	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:01	b4f4c89b-5e06-4184-a074-20b1ff8bf0aa	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:01	6a49d301-0913-4143-a10a-ef71e2a3c716	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:01	54f78acd-0b0e-4e30-8664-94938edd21e6	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:01	dd57e5b9-ac0a-4e4c-a52d-603d0d8525b4	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:01	8e4e7dd1-9496-4813-abc9-96f21ff330c4	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:01	dc87fcaf-077e-4729-b172-4c999a52bbd3	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:02	36a5d962-d1dc-4f1d-ac63-19ba489bb37a	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:02	752aaa00-efe7-4122-b3c9-3bdc41286870	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:02	9154a4b4-9179-4ab2-bf2d-ad2eb4d17aa9	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:02	584df08b-cb56-42a3-b38a-5ff9bb40c67c	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:04	1910a785-e85e-4abb-a755-147b8c2385ec	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:04	74f2ab5a-4bc2-4361-b787-562a4178a2df	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:07	25ddd066-f6df-43d6-a328-02e06d4d4934	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:30:07	634f0d07-3c99-425f-9dcb-1cd78bf0083b	Error: Not allowed by CORS	GET	/users	http://localhost:3001
+20231207	01:32:18	8d7caeef-8d30-498c-8964-a077b53376aa	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:32:18	d0a43127-a2fb-44db-b92f-ce5ee9a28727	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:33:07	efe7e3b1-d010-43ca-b078-dd66df3e3360	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:33:07	a666e748-1977-4873-856e-97e5ea4084d9	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:33:31	1ca097c8-c0cb-4025-977c-9d0877c934c3	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:33:31	fa106dca-bbbc-47cb-9d39-ffafd2a34866	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:34:42	616bb9d6-4bf9-4211-85bc-635a07689398	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:34:50	ebb9c952-a991-4ab6-8926-22513d81558c	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:34:50	316d97eb-8e75-4ed1-8ce0-9d9781f6e7bd	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:36:12	3137db6e-2064-41dd-8b32-16678f369771	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	undefined
+20231207	01:39:33	cdc04f9b-af41-433d-a006-f6b85370fa5c	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:39:33	8d11c4c2-c2b3-4af8-8f98-671d2417c20a	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:39:39	8522c1a7-4d27-40a4-bda5-567aaf4a2071	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:39:39	79a5acd5-5498-462a-b2a2-82bccef02658	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	http://localhost:3001
+20231207	01:39:41	c64a264d-c731-4a79-9252-3b9daf35a2f8	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	undefined
+20231207	01:40:01	8382493a-ff44-408f-833e-13c6341a0f93	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	undefined
+20231207	01:40:02	815e6b35-4614-48e4-9c46-8338506eb993	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	undefined
+20231207	01:40:02	df6d0b12-2ecd-4f80-b5da-0117b2ebeb15	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	undefined
+20231207	01:40:19	9fa1b2d5-377b-43fd-ad01-dc41f9e1c88e	TypeError: Cannot read properties of null (reading 'username')	GET	/entry	undefined
+20231207	01:40:31	2a3f44fe-a858-4409-82cd-4b0ef8f8d801	ReferenceError: entrysWithUser is not defined	GET	/entry	undefined
+20231207	01:40:50	826ca917-3d68-4ba3-b2a4-2db9ff039bdf	ReferenceError: entrysWithUser is not defined	GET	/entry	undefined
+20231207	01:40:51	e7b2d0b9-291f-4512-8343-cfd536942b0a	ReferenceError: entrysWithUser is not defined	GET	/entry	undefined
+20231207	01:40:51	54254660-ac8d-42e9-bc05-bdad31232a08	ReferenceError: entrysWithUser is not defined	GET	/entry	undefined
+20231207	01:40:51	36fdceca-0dbc-4997-861e-43e4696556ef	ReferenceError: entrysWithUser is not defined	GET	/entry	undefined
+20231207	01:40:51	1988e92c-9338-4cf9-8bed-5bd8840220f5	ReferenceError: entrysWithUser is not defined	GET	/entry	undefined
+20231207	01:40:51	b2d70015-32c1-4921-b921-f5328cfad884	ReferenceError: entrysWithUser is not defined	GET	/entry	undefined

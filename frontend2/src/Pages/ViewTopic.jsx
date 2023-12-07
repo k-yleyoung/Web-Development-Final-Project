@@ -34,6 +34,7 @@ export default function ViewTopic() {
       axios
         .get('http://localhost:3000/entry')
         .then((res) => {
+          console.log(res.data);
           var topicEntries = res.data.filter(entryInTopic);
           setCurrentEntries(
             topicEntries.map((entry) => ({

@@ -13,12 +13,12 @@ const getAllEntrys = asyncHandler(async (req, res) => {
     }
 
     // Add username to each note before sending the response 
-    const entrysWithUser = await Promise.all(entrys.map(async (entry) => {
+    /*const entrysWithUser = await Promise.all(entrys.map(async (entry) => {
         const user = await User.findById(entry.user).lean().exec()
         return { ...entry, username: user.username }
-    }))
+    }))*/
 
-    res.json(entrysWithUser)
+    res.json(entrys)
     
 })
 
