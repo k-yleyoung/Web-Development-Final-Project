@@ -1,14 +1,27 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
 
 export default function CreateEntry() {
-    const [user, setUser] = useState('');
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
 
-  
-    function handleUserChange(event) {
-        setUser(event.target.value);
+    const navigate = useNavigate();
+
+
+    function getTopicId() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const topicId = urlParams.get('topic');
+        
+        return topicId;
+    }
+
+    function getTopicName() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const topicName = urlParams.get('name');
+        
+        return topicName;
     }
 
     function handleTitleChange(event) {
@@ -19,23 +32,22 @@ export default function CreateEntry() {
         setText(event.target.value);
     }
   
-    function handleSubmit(event) {
-        axios.post('http://localhost:3000/entry', {user, title, text}).then(
+    function handleSubmit() {
+        var topicId = getTopicId();
+        var topicName = getTopicName();
+        axios.post('http://localhost:3000/entry', {user: topicId, title, text}).then(
             res=>{
-              alert('done')
             }
           ).catch(error => {
-            alert('no work');
             console.error('Error fetching users:', error);
           });
+
+          navigate("/viewTopic?id="+topicId+"&name="+topicName);
+
     }
   return (
     <div className='home'>
     <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input type="text" value={user} onChange={handleUserChange} />
-      </label>
       <label>
         Title:
         <input type="text" value={title} onChange={handleTitleChange} />

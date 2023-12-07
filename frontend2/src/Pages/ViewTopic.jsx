@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-
-
 export default function ViewTopic() {
 
     function getTopicId() {
@@ -11,19 +9,24 @@ export default function ViewTopic() {
         const topicId = urlParams.get('id');
         return topicId;
     }
-    //fetch journal from query param id
+    //fetch topicID from query param id
     
     const topicId = getTopicId();
+
+    function getTopicName() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const topicName = urlParams.get('name');
+        return topicName;
+    }
+    //fetch journal from query param id
+    
+    const topicName = getTopicName();
 
     const navigate = useNavigate();
 
     //const [entries, setEntries] = useState([]);
     const [currentEntries, setCurrentEntries] = useState([]);
     //var topicEntries = [];
-
-    function viewEntry(entryId){
-        navigate("/viewEntry?id="+entryId);
-    }
 
     function entryInTopic(entry){
         if (entry.user ===topicId){
@@ -44,7 +47,7 @@ export default function ViewTopic() {
                 setCurrentEntries(topicEntries.map((entry) => ({
                   title: entry.title,
                   content: entry.text,
-                  date: entry.timestamp,
+                  date: entry.createdAt.substring(0,10),
                   id: entry._id,
                 })));
               console.log(currentEntries);
@@ -60,13 +63,14 @@ export default function ViewTopic() {
 
   return (
     <div>
-        <button onClick={() => navigate("/")}>dashboard</button>
-
+        <h2>{topicName}</h2>
+        <button onClick={() => navigate("/createEntry?topic=" + getTopicId() + "&name=" + getTopicName())}>Create a new Entry for {topicName}</button>
         <div>
         {currentEntries.map((entry, index)=>(
           <div key={index} className='entryBox'>
-            <button onClick={() => viewEntry(entry.id)}>{entry.title}</button>
-            <p>hello</p>
+            <h3>{entry.title}</h3>
+            <p>{entry.date}</p>
+            <h4>{entry.content}</h4>
           </div>
         ))}
       </div>

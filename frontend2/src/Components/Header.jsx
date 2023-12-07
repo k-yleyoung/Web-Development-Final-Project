@@ -1,10 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom'
+
 
 export default function Header({title}) {
+    const navigate = useNavigate();
+
     return (
         <header className='header'>
             <h1>{title}</h1>
+            <button onClick={() => navigate("/")}>dashboard</button>
         </header>
     )
 }
