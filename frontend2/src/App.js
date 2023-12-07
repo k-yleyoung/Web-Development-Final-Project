@@ -1,4 +1,3 @@
-import './App.css';
 import CreateEntry from './Pages/CreateEntry.jsx';
 import MyDashboard from './Pages/MyDashboard.jsx';
 import Header from './Components/Header.jsx';

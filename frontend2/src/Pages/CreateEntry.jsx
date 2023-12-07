@@ -1,63 +1,86 @@
-import React, {useState} from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import 'w3-css/w3.css';
 
 export default function CreateEntry() {
-    const [title, setTitle] = useState('');
-    const [text, setText] = useState('');
+  const [title, setTitle] = useState('');
+  const [text, setText] = useState('');
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
+  function getTopicId() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const topicId = urlParams.get('topic');
+    return topicId;
+  }
 
-    function getTopicId() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const topicId = urlParams.get('topic');
-        
-        return topicId;
-    }
+  function getTopicName() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const topicName = urlParams.get('name');
+    return topicName;
+  }
 
-    function getTopicName() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const topicName = urlParams.get('name');
-        
-        return topicName;
-    }
+  function handleTitleChange(event) {
+    setTitle(event.target.value);
+  }
 
-    function handleTitleChange(event) {
-        setTitle(event.target.value);
-    }
+  function handleTextChange(event) {
+    setText(event.target.value);
+  }
 
-    function handleTextChange(event) {
-        setText(event.target.value);
-    }
-  
-    function handleSubmit() {
-        var topicId = getTopicId();
-        var topicName = getTopicName();
-        axios.post('http://localhost:3000/entry', {user: topicId, title, text}).then(
-            res=>{
-            }
-          ).catch(error => {
-            console.error('Error fetching users:', error);
-          });
+  function handleSubmit(event) {
+    event.preventDefault();
 
-          navigate("/viewTopic?id="+topicId+"&name="+topicName);
+    var topicId = getTopicId();
+    var topicName = getTopicName();
 
-    }
+    axios
+      .post('http://localhost:3000/entry', { user: topicId, title, text })
+      .then((res) => {
+        // Handle success if needed
+      })
+      .catch((error) => {
+        console.error('Error creating entry:', error);
+      });
+
+    navigate(`/viewTopic?id=${topicId}&name=${topicName}`);
+  }
+
   return (
-    <div className='home'>
-    <form onSubmit={handleSubmit}>
-      <label>
-        Title:
-        <input type="text" value={title} onChange={handleTitleChange} />
-      </label>
-      <label>
-        Content:
-        <input type="text" value={text} id='passwordField' onChange={handleTextChange} />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
-  </div>
-  )
+    <div className='w3-container w3-center w3-black' style={{ padding: 0 }}>
+      <form onSubmit={handleSubmit} className='w3-card-4 w3-half w3-margin w3-margin-left w3-margin-right'>
+        <div className='w3-container w3-blue' style={{ padding: 0 }}>
+          <h2 className='w3-text-white'>Create Entry</h2>
+        </div>
+        <div className='w3-container' style={{ padding: 0 }}>
+          <label>
+            <b>Title:</b>
+            <input
+              type='text'
+              value={title}
+              onChange={handleTitleChange}
+              className='w3-input w3-border'
+            />
+          </label>
+          <br />
+          <label>
+            <b>Content:</b>
+            <input
+              type='text'
+              value={text}
+              onChange={handleTextChange}
+              className='w3-input w3-border'
+            />
+          </label>
+          <br />
+          <input
+            type='submit'
+            value='Submit'
+            className='w3-button w3-blue w3-margin-top'
+          />
+        </div>
+      </form>
+    </div>
+  );
 }
