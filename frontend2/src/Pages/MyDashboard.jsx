@@ -8,20 +8,16 @@ export default function MyDashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getUsers();
-  }, []);
-
-  function getUsers() {
-    axios
-      .get('http://localhost:3000/users')
+    axios.get('http://localhost:3000/users')
       .then((res) => {
         console.log(res);
         setTopics(res.data);
       })
       .catch((error) => {
         console.error('Error fetching users:', error);
-      });
-  }
+      }, [topics]);
+    }
+  );
 
   function viewTopic(topicId, topicName) {
     navigate(`/viewTopic?id=${topicId}&name=${topicName}`);

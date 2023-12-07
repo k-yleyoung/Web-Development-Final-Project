@@ -57,7 +57,7 @@ export default function ViewTopic() {
       <button
         onClick={() =>
           navigate(
-            '/createEntry?topic=' + getTopicId() + '&name=' + getTopicName()
+            '/createEntry?topic=' + getTopicId()
           )}
         className='w3-button w3-blue w3-margin-top'
         style={{ fontFamily: 'Courier New, monospace' }}
