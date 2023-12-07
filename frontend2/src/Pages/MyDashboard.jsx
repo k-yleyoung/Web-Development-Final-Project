@@ -23,6 +23,34 @@ export default function MyDashboard() {
     navigate(`/viewTopic?id=${topicId}&name=${topicName}`);
   }
 
+  const [topicName, setTopicName] = useState('');
+  const password = '123';
+
+  function handleNameChange(event) {
+    setTopicName(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();    
+
+    axios
+      .post('http://localhost:3000/users', { username: topicName, password })
+      .then((res) => {})
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+      });
+      toggleTopic();
+      document.getElementById('inputField').innerHTML='';
+  }
+
+  function toggleTopic(){
+    if(document.getElementById('topicForm').style.display === 'none'){
+      document.getElementById('topicForm').style.display = 'block';
+    } else {
+      document.getElementById('topicForm').style.display = 'none';
+    }
+  }
+
   return (
     <div className='w3-display-container w3-center w3-black' style={{ minHeight: '100vh' }}>
       <div className='w3-container w3-padding-64'>
@@ -31,12 +59,36 @@ export default function MyDashboard() {
         </h2>
         <div className='w3-container w3-padding'>
           <button
-            onClick={() => navigate('/createTopic')}
+            onClick={() => toggleTopic()}
             className='w3-button w3-blue w3-padding'
             style={{ fontFamily: 'Courier New, monospace' }}
           >
             Create a new Topic
           </button>
+
+            <div id='topicForm' className='w3-display-container w3-center w3-black w3-margin-auto' style={{ display: 'none' }}>
+            <form onSubmit={handleSubmit} className='w3-card-4 w3-half w3-margin'>
+              <div className='w3-container w3-padding'>
+                <label style={{ fontFamily: 'Courier New, monospace', color: 'white' }}>
+                  <b>Topic Name:</b>
+                  <input
+                    type='text'
+                    value={topicName}
+                    onChange={handleNameChange}
+                    className='w3-input w3-border'
+                    id='inputField'
+                  />
+                </label>
+                <br />
+                <input
+                  type='submit'
+                  value='Submit'
+                  className='w3-button w3-blue w3-margin-top'
+                />
+              </div>
+            </form>
+          </div>
+
         </div>
         <div className='w3-container w3-padding'>
           <div className='w3-row-padding'>

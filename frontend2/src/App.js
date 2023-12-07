@@ -3,7 +3,6 @@ import MyDashboard from './Pages/MyDashboard.jsx';
 import Header from './Components/Header.jsx';
 import Footer from './Components/Footer.jsx';
 import ViewTopic from './Pages/ViewTopic.jsx';
-import CreateTopic from './Pages/CreateTopic.jsx';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
 
@@ -15,7 +14,6 @@ function App() {
         <Routes>
           <Route exact path = '/' element = {<MyDashboard/>}/>
           <Route exact path = '/createEntry' element = {<CreateEntry/>}/>
-          <Route exact path = '/createTopic' element = {<CreateTopic/>}/>
           <Route exact path = '/viewTopic' element = {<ViewTopic/>}/>
 
         </Routes>
